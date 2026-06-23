@@ -1,6 +1,6 @@
-# TODO
+- [ ] Analisis penyebab WA tidak terbuka (contact.js/contact.html)
+- [x] Implement fix: buka WhatsApp sekali pakai window.open + batasi panjang message
 
-- [x] Buat folder khusus untuk menyimpan foto: `assets/images`
-- [x] Pindahkan semua file foto ke `assets/images`
-- [x] Update referensi path foto di `index.html`, `services.html`, `services.js`, dan `style.css`
+- [ ] (Opsional) Samakan mekanisme submit: pastikan tidak ada double redirect
+- [ ] Verifikasi: submit form dari browser/HP, pastikan WA terbuka
 

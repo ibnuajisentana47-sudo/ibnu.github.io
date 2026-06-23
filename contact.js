@@ -13,6 +13,13 @@ function buildMessageBody(name, email, message) {
     return `Halo PT KSMA,\n\nNama: *${name}*\nEmail: ${email}\n\nPesan:\n"${message}"`;
 }
 
+function trimForWhatsApp(text, maxChars = 1400) {
+    if (text === undefined || text === null) return '';
+    const s = String(text);
+    if (s.length <= maxChars) return s;
+    return s.slice(0, maxChars).trim() + '…';
+}
+
 function showSuccessNotification(method) {
     const successMessageElement = document.getElementById('successMessage');
     const successDetailElement = document.getElementById('successDetail');
@@ -39,15 +46,17 @@ document.addEventListener('DOMContentLoaded', () => {
         const name = document.getElementById('name').value;
         const email = document.getElementById('email').value;
         const message = document.getElementById('message').value;
-        const submissionMethod = 'whatsapp'; // paksa kirim via WhatsApp (email dihapus)
+
+        const submissionMethod = 'whatsapp'; // paksa kirim via WhatsApp
 
         const fullMessage = buildMessageBody(name, email, message);
 
         if (submissionMethod === 'whatsapp') {
-            window.open(
-                `https://wa.me/${WHATSAPP_PHONE_NUMBER}?text=${encodeURIComponent(fullMessage)}`,
-                '_blank'
-            );
+            const trimmedMessage = trimForWhatsApp(fullMessage);
+            const waUrl = `https://wa.me/${WHATSAPP_PHONE_NUMBER}?text=${encodeURIComponent(trimmedMessage)}`;
+
+            // Penting: lakukan sekali saja dengan window.open untuk menghindari double redirect/stuck
+            window.open(waUrl, '_blank', 'noopener,noreferrer');
         } else {
             const subject = encodeURIComponent(`Pesan dari Website - ${name}`);
             const emailBody = encodeURIComponent(fullMessage);
