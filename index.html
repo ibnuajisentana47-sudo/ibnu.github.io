@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profil Perusahaan | PT.KARYA SINAR MANDIRI ABADI</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-gray-50 text-gray-800 font-sans">
+
+    <!-- Navigation -->
+    <nav class="bg-white/90 backdrop-blur-md shadow-sm p-4 sticky top-0 z-50 border-b border-gray-100">
+        <div class="container mx-auto flex justify-between items-center relative">
+            <a href="index.html" class="flex items-center space-x-2 md:space-x-3 group">
+<img src="assets/images/logo.png" alt="Logo PT KSMA" class="h-8 md:h-11 w-auto object-contain">
+                <h1 class="text-lg md:text-2xl font-bold text-blue-600 uppercase leading-tight group-hover:text-blue-500 transition">PT.KARYA SINAR MANDIRI ABADI</h1>
+            </a>
+            
+            <!-- Hamburger Button -->
+            <button onclick="toggleMenu()" class="md:hidden text-blue-600 focus:outline-none">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path id="navIcon" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+                </svg>
+            </button>
+
+            <!-- Desktop Menu -->
+            <ul class="hidden md:flex space-x-6">
+                <li><a href="index.html" class="text-blue-600 font-bold border-b-2 border-blue-600 pb-1">Beranda</a></li>
+                <li><a href="services.html" class="text-gray-600 hover:text-blue-600 transition font-medium">Layanan</a></li>
+                <li><a href="contact.html" class="text-gray-600 hover:text-blue-600 transition font-medium">Kontak</a></li>
+            </ul>
+        </div>
+
+        <!-- Mobile Menu Dropdown -->
+        <div id="mobileMenu" class="hidden md:hidden bg-white absolute left-0 right-0 top-full border-b border-gray-100 shadow-lg px-4 py-6 space-y-4">
+            <a href="index.html" class="block text-blue-600 font-bold border-l-4 border-blue-600 pl-3">Beranda</a>
+            <a href="services.html" class="block text-gray-600 font-medium pl-4">Layanan</a>
+            <a href="contact.html" class="block text-gray-600 font-medium pl-4">Kontak</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero-gradient text-white py-32 px-4 text-center relative">
+        <div class="absolute inset-0 bg-blue-950/75 z-0"></div>
+        <div class="relative z-10">
+            <h2 class="text-4xl md:text-6xl font-bold mb-4 animate-fade-in text-shadow-md">Solusi Terpercaya untuk Industri Anda</h2>
+            <p class="text-xl mb-8 opacity-100 text-blue-50">Dedikasi tinggi dalam memberikan kualitas terbaik bagi setiap klien.</p>
+            <a href="contact.html" class="bg-white text-blue-600 px-8 py-3 rounded-full font-bold hover:shadow-xl transition-all transform hover:-translate-y-1 inline-block">Mulai Kolaborasi</a>
+        </div>
+    </header>
+
+    <!-- About Section -->
+    <section class="py-24 hero-gradient relative">
+        <div class="absolute inset-0 bg-blue-950/75 z-0"></div>
+        <div class="container mx-auto px-4 relative z-10">
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div class="space-y-6">
+                    <h3 class="text-3xl md:text-4xl font-extrabold text-white leading-tight text-shadow-md">Membangun Fondasi <br><span class="text-blue-400">Masa Depan Indonesia</span></h3>
+                    <p class="text-blue-100 text-lg leading-relaxed">
+                        PT.KARYA SINAR MANDIRI ABADI berkomitmen untuk memberikan solusi infrastruktur dan layanan profesional yang inovatif. Dengan pengalaman bertahun-tahun, kami memastikan setiap proyek diselesaikan dengan standar keunggulan tertinggi.
+                    </p>
+                    <div class="flex space-x-4">
+                        <div class="border-l-4 border-blue-400 pl-4">
+                            <p class="text-2xl font-bold text-white"><span id="exp-count">1</span>+</p>
+                            <p class="text-sm text-blue-200 uppercase tracking-wider">Tahun Pengalaman</p>
+                        </div>
+                        <div class="border-l-4 border-blue-400 pl-4">
+                            <p class="text-2xl font-bold text-white"><span id="proj-count">1</span>+</p>
+                            <p class="text-sm text-blue-200 uppercase tracking-wider">Proyek Selesai</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="relative">
+                    <div class="absolute -inset-4 bg-white/10 rounded-3xl -z-10 transform rotate-3"></div>
+                    <img src="https://images.unsplash.com/photo-1541888946425-d81bb19480c5?q=80&w=1000" alt="Representasi Proyek PT KSMA" class="w-full h-80 rounded-2xl shadow-2xl object-cover transform hover:scale-[1.02] transition-transform duration-500">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Vision & Mission Section -->
+    <section class="py-24 bg-blue-900 text-white">
+        <div class="container mx-auto px-4">
+            <div class="grid md:grid-cols-2 gap-16">
+                <div class="space-y-6 animate-fade-in">
+                    <h2 class="text-3xl font-bold border-l-4 border-blue-500 pl-4 uppercase tracking-wider">Visi</h2>
+                    <p class="text-xl leading-relaxed opacity-90 italic">
+                        "Menjadi mitra terpercaya dalam menyediakan solusi infrastruktur dan layanan teknik yang inovatif, berkelanjutan, dan unggul di Indonesia."
+                    </p>
+                </div>
+                <div class="space-y-6 animate-fade-in delay-200">
+                    <h2 class="text-3xl font-bold border-l-4 border-blue-500 pl-4 uppercase tracking-wider">Misi</h2>
+                    <ul class="space-y-4 text-lg">
+                        <li class="flex items-start">
+                            <span class="text-blue-400 mr-3 mt-1 font-bold">01.</span>
+                            <p class="opacity-90">Memberikan layanan teknik berkualitas tinggi dengan mengutamakan keamanan dan ketepatan waktu.</p>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-blue-400 mr-3 mt-1 font-bold">02.</span>
+                            <p class="opacity-90">Terus berinovasi dalam teknologi dan metodologi kerja untuk memberikan nilai tambah bagi klien.</p>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-blue-400 mr-3 mt-1 font-bold">03.</span>
+                            <p class="opacity-90">Membangun hubungan kerja sama jangka panjang yang didasarkan pada integritas dan profesionalisme.</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Legality Section -->
+    <section class="py-24 hero-gradient relative">
+        <div class="absolute inset-0 bg-blue-950/75 z-0"></div>
+        <div class="container mx-auto px-4 text-center relative z-10">
+            <div class="max-w-3xl mx-auto mb-16">
+                <h2 class="text-3xl md:text-4xl font-extrabold text-white mb-4 text-shadow-md">Legalitas & Sertifikasi</h2>
+                <p class="text-blue-100 text-lg">Komitmen kami terhadap transparansi dan kepatuhan hukum didukung oleh dokumen resmi yang telah dilegalisir.</p>
+            </div>
+            <div class="grid grid-cols-2 md:grid-cols-3 gap-6">
+                <div onclick="openModal('Akta Pendirian PT KARYA SINAR MANDIRI ABADI.pdf', 'Akta Pendirian')" class="card-glass p-6 rounded-2xl border border-gray-100 flex flex-col items-center justify-center space-y-3 cursor-pointer group aspect-square">
+                    <div class="text-5xl text-blue-600">📄</div>
+                    <h4 class="font-bold text-gray-800 group-hover:text-blue-600 transition text-center">Akta Pendirian</h4>
+                    <p class="text-xs text-gray-500 uppercase tracking-tighter text-center">Telah Dilegalisir</p>
+                </div>
+                <div onclick="openModal('NIB.pdf', 'NIB')" class="card-glass p-6 rounded-2xl border border-gray-100 flex flex-col items-center justify-center space-y-3 cursor-pointer group aspect-square">
+                    <div class="text-5xl text-blue-600">📑</div>
+                    <h4 class="font-bold text-gray-800 group-hover:text-blue-600 transition text-center">NIB</h4>
+                    <p class="text-xs text-gray-500 uppercase tracking-tighter text-center">Nomor Induk Berusaha</p>
+                </div>
+                <div onclick="openModal('SK PT KARYA SINAR MANDIRI ABADI.pdf', 'SK PT.KARYA SINAR MANDIRI ABADI')" class="card-glass p-6 rounded-2xl border border-gray-100 flex flex-col items-center justify-center space-y-3 cursor-pointer group aspect-square">
+                    <div class="text-5xl text-blue-600">📜</div>
+                    <h4 class="font-bold text-gray-800 group-hover:text-blue-600 transition text-center">SK PT.KARYA SINAR MANDIRI ABADI</h4>
+                    <p class="text-xs text-gray-500 uppercase tracking-tighter text-center">Surat Keputusan</p>
+                </div>
+                <div onclick="openModal('SBU BS004 PT KARYA SINAR MANDIRI ABADI.pdf', 'SBU Jaringan Irigasi & Drainase')" class="card-glass p-6 rounded-2xl border border-gray-100 flex flex-col items-center justify-center space-y-3 cursor-pointer group aspect-square">
+                    <div class="text-5xl text-blue-600">💧</div>
+                    <h4 class="font-bold text-gray-800 group-hover:text-blue-600 transition text-center uppercase">SBU Irigasi</h4>
+                    <p class="text-xs text-gray-500 uppercase tracking-tighter text-center">Irigasi & Drainase</p>
+                </div>
+                <div onclick="openModal('SBU BG002 PT KARYA SINAR MANDIRI ABADI.pdf', 'SBU Gedung Perkantoran')" class="card-glass p-6 rounded-2xl border border-gray-100 flex flex-col items-center justify-center space-y-3 cursor-pointer group aspect-square">
+                    <div class="text-5xl text-blue-600">🏗️</div>
+                    <h4 class="font-bold text-gray-800 group-hover:text-blue-600 transition text-center uppercase">SBU Gedung</h4>
+                    <p class="text-xs text-gray-500 uppercase tracking-tighter text-center">Gedung Perkantoran</p>
+                </div>
+                <div onclick="openModal('SKT PT KARYA SINAR MANDIRI ABADI.pdf', 'Surat Keterangan Terdaftar')" class="card-glass p-6 rounded-2xl border border-gray-100 flex flex-col items-center justify-center space-y-3 cursor-pointer group aspect-square">
+                    <div class="text-5xl text-blue-600">🏛️</div>
+                    <h4 class="font-bold text-gray-800 group-hover:text-blue-600 transition text-center uppercase">SKT</h4>
+                    <p class="text-xs text-gray-500 uppercase tracking-tighter text-center">Surat Keterangan Terdaftar</p>
+                </div>
+                <div onclick="openModal('Pendirian PT KARYA SINAR MANDIRI ABADI.pdf', 'Sertifikat Pendirian')" class="card-glass p-6 rounded-2xl border border-gray-100 flex flex-col items-center justify-center space-y-3 cursor-pointer group aspect-square">
+                    <div class="text-5xl text-blue-600">🏢</div>
+                    <h4 class="font-bold text-gray-800 group-hover:text-blue-600 transition text-center uppercase">Sertifikat Pendirian</h4>
+                    <p class="text-xs text-gray-500 uppercase tracking-tighter text-center">Legalitas Badan Usaha</p>
+                </div>
+            </div>
+            <div class="mt-12">
+                <p class="text-sm text-blue-200 italic">* Dokumen asli dapat diperlihatkan atas permintaan resmi saat proses tender atau kerjasama.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modal Structure -->
+    <div id="legalModal" class="fixed inset-0 z-[100] hidden bg-black/80 backdrop-blur-sm flex items-center justify-center p-4 transition-all duration-300"> 
+        <div class="bg-white max-w-4xl w-full rounded-3xl relative shadow-2xl animate-fade-in flex flex-col max-h-[98vh]">
+            <button onclick="closeModal()" class="absolute top-6 right-6 text-gray-400 hover:text-red-500 text-3xl font-bold transition-colors z-10">&times;</button>
+            <div class="p-4 md:p-8 flex-grow flex flex-col overflow-hidden">
+                <h3 id="modalTitle" class="text-xl md:text-2xl font-bold text-blue-900 mb-4 md:mb-6 pr-10 border-b pb-4"></h3>
+                <div class="bg-gray-100 rounded-2xl overflow-hidden shadow-inner h-[70vh] md:h-[80vh] w-full">
+                    <iframe id="pdfViewer" src="" class="w-full h-full"></iframe>
+                </div>
+                <div class="mt-4 md:mt-6 pt-4 border-t flex justify-between items-center">
+                    <span class="text-sm text-gray-400">Dokumen Resmi PT KSMA</span>
+                    <button onclick="closeModal()" class="bg-blue-600 text-white px-6 py-2 rounded-xl font-bold hover:bg-blue-700 transition">Tutup</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="bg-gray-900 text-white py-8 border-t border-gray-800 text-center">
+        <p>&copy; 2026 PT.KARYA SINAR MANDIRI ABADI.</p>
+    </footer>
+
+    <script src="shared.js"></script>
+    <script src="home.js"></script>
+
+    <!-- Floating WhatsApp Button -->
+    <a href="https://wa.me/6287828680690" target="_blank" class="fixed bottom-6 right-6 z-[100] bg-green-500 text-white p-4 rounded-full shadow-2xl hover:bg-green-600 transition-all transform hover:scale-110 flex items-center justify-center" title="Chat via WhatsApp">
+        <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.067 2.877 1.215 3.076.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+        </svg>
+    </a>
+</body>
+</html>
