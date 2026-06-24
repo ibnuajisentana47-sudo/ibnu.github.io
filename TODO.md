@@ -1,6 +1,3 @@
-- [ ] Analisis penyebab WA tidak terbuka (contact.js/contact.html)
-- [x] Implement fix: buka WhatsApp sekali pakai window.open + batasi panjang message
-
-- [ ] (Opsional) Samakan mekanisme submit: pastikan tidak ada double redirect
-- [ ] Verifikasi: submit form dari browser/HP, pastikan WA terbuka
-
+- [ ] Perbaiki `contact.js` agar tombol kirim WhatsApp berfungsi (hapus duplikasi code & pastikan handler submit konsisten)
+- [ ] Tes manual: isi form di `contact.html` lalu klik “Kirim via WhatsApp” di browser/HP emulation
+- [ ] Pastikan alert/success muncul dan popup WhatsApp terbuka

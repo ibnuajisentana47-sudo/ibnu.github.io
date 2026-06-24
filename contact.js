@@ -1,8 +1,9 @@
 /**
  * Contact Logic - PT KSMA
- * Integrasi pengiriman pesan via WhatsApp dan Email.
+ * Kirim pesan via WhatsApp (utama) / Email.
  */
 
+// Harus sama dengan nomor pada contact.html (wa.me)
 const WHATSAPP_PHONE_NUMBER = "6287828680690";
 const COMPANY_EMAIL_ADDRESS = "karyasinarmandiriabadi@outlook.co.id";
 
@@ -10,14 +11,26 @@ const COMPANY_EMAIL_ADDRESS = "karyasinarmandiriabadi@outlook.co.id";
  * Helper: Membangun isi pesan
  */
 function buildMessageBody(name, email, message) {
-    return `Halo PT KSMA,\n\nNama: *${name}*\nEmail: ${email}\n\nPesan:\n"${message}"`;
+    const n = (name ?? '').toString().trim();
+    const e = (email ?? '').toString().trim();
+    const m = (message ?? '').toString().trim();
+
+    return `Halo PT KSMA\n\nNama: ${n}\nEmail: ${e}\n\nPesan:\n${m}`;
 }
 
-function trimForWhatsApp(text, maxChars = 1400) {
+function cleanForWhatsApp(text) {
     if (text === undefined || text === null) return '';
-    const s = String(text);
-    if (s.length <= maxChars) return s;
-    return s.slice(0, maxChars).trim() + '…';
+    return String(text)
+        .replace(/\r\n/g, '\n')
+        .replace(/\n{3,}/g, '\n\n')
+        .replace(/\*/g, '')
+        .trim();
+}
+
+function trimForWhatsApp(text) {
+    // Tidak terlalu dipaksa batas (biar tidak kepotong), tapi tetap aman.
+    const cleaned = cleanForWhatsApp(text);
+    return cleaned;
 }
 
 function showSuccessNotification(method) {
@@ -25,7 +38,9 @@ function showSuccessNotification(method) {
     const successDetailElement = document.getElementById('successDetail');
 
     if (successDetailElement) {
-        successDetailElement.innerText = method === 'whatsapp' ? 'Mengarahkan Anda ke WhatsApp...' : 'Mengarahkan ke Aplikasi Email...';
+        successDetailElement.innerText = method === 'whatsapp'
+            ? 'Mengarahkan Anda ke WhatsApp...'
+            : 'Mengarahkan ke Aplikasi Email...';
     }
 
     if (successMessageElement) {
@@ -36,27 +51,46 @@ function showSuccessNotification(method) {
     }
 }
 
+console.log('[contact] script loaded');
+
 document.addEventListener('DOMContentLoaded', () => {
     const contactForm = document.getElementById('contactForm');
-    if (!contactForm) return;
+    const nameEl = document.getElementById('name');
+    const emailEl = document.getElementById('email');
+    const messageEl = document.getElementById('message');
 
-    contactForm.addEventListener('submit', function (e) {
+    if (!contactForm || !nameEl || !emailEl || !messageEl) {
+        console.log('[contact] missing form elements');
+        return;
+    }
+
+    contactForm.addEventListener('submit', (e) => {
         e.preventDefault();
 
-        const name = document.getElementById('name').value;
-        const email = document.getElementById('email').value;
-        const message = document.getElementById('message').value;
+        console.log('[contact] submit click');
 
-        const submissionMethod = 'whatsapp'; // paksa kirim via WhatsApp
+        const name = nameEl.value;
+        const email = emailEl.value;
+        const message = messageEl.value;
 
+        const submitBtn = e.submitter;
+        const submissionMethod = submitBtn && submitBtn.value ? submitBtn.value : 'whatsapp';
+
+        const phoneDigits = String(WHATSAPP_PHONE_NUMBER).replace(/\D/g, '');
         const fullMessage = buildMessageBody(name, email, message);
 
         if (submissionMethod === 'whatsapp') {
             const trimmedMessage = trimForWhatsApp(fullMessage);
-            const waUrl = `https://wa.me/${WHATSAPP_PHONE_NUMBER}?text=${encodeURIComponent(trimmedMessage)}`;
+            const safeText = trimmedMessage || '';
 
-            // Penting: lakukan sekali saja dengan window.open untuk menghindari double redirect/stuck
-            window.open(waUrl, '_blank', 'noopener,noreferrer');
+            console.log('[contact] safeText len=', safeText.length);
+            console.log('[contact] safeText=', safeText);
+
+            const waUrl = `https://wa.me/${phoneDigits}?text=${encodeURIComponent(safeText)}`;
+            console.log('[contact] waUrl=', waUrl);
+
+            // Untuk kompatibilitas mobile & hosting (GitHub Pages), gunakan navigasi langsung saja.
+            window.location.href = waUrl;
         } else {
             const subject = encodeURIComponent(`Pesan dari Website - ${name}`);
             const emailBody = encodeURIComponent(fullMessage);
@@ -64,7 +98,12 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         showSuccessNotification(submissionMethod);
-        this.reset();
+        // reset hanya setelah navigasi selesai (mengurangi risiko di beberapa browser/hosting)
+        if (submissionMethod === 'whatsapp') {
+            setTimeout(() => contactForm.reset(), 1000);
+        } else {
+            setTimeout(() => contactForm.reset(), 100);
+        }
     });
 });
 
